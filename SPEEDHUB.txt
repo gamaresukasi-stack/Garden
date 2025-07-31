@@ -1,0 +1,27 @@
+-- Grow a Garden | SpeedHub Script by Wizya30
+
+-- Auto Collect All Harvestable Plants
+local player = game.Players.LocalPlayer
+local garden = workspace:FindFirstChild("Garden")
+
+if garden then
+    for _, plant in pairs(garden:GetChildren()) do
+        if plant:IsA("Model") and plant:FindFirstChild("Harvest") then
+            local click = plant.Harvest:FindFirstChildWhichIsA("ClickDetector")
+            if click then
+                fireclickdetector(click)
+            end
+        end
+    end
+end
+
+-- Speed Hack
+local char = player.Character or player.CharacterAdded:Wait()
+local human = char:FindFirstChildWhichIsA("Humanoid")
+
+if human then
+    human.WalkSpeed = 100 -- you can change this value
+end
+
+-- Message in the console
+print("[SpeedHub] Loaded successfully for Grow a Garden!")
